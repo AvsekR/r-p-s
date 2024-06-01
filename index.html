@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let computerScore = 0;
+        let humanScore = 0;
+        let chose;
+        let choice;
+        function getComputerChoice(){
+            let min = 1
+            let max = 4
+            let n = Math.floor(Math.random()*(max-min))+min;
+            switch(n){
+                case 1 :
+                    choice = "Rock"
+                break
+                case 2 :
+                    choice = "Paper"
+                break
+                case 3 :    
+                    choice = "Scissors"
+                break
+            }
+            return choice
+        }
+        function getHumanChoice(){
+            chose = prompt(" \n What do you choose :\n \n Rock \n Paper \n or \n Scissors")
+            return chose
+        }
+        function playRound(humanChoice,computerChoice){
+            humanChoice=humanChoice.toLowerCase()
+            computerChoice=computerChoice.toLowerCase()
+            console.log(`Computer chose : ${choice}  You chose : ${chose.charAt(0).toUpperCase() + chose.slice(1)}`)
+            if(computerChoice=="rock"){
+                if(humanChoice=="rock"){
+                    console.log("It's a Draw")
+                }
+                else if(humanChoice=="paper"){
+                    console.log("You win!")
+                    humanScore++
+                }
+                else if(humanChoice=="scissors"){
+                    console.log("You Lose!")
+                    computerScore++
+                }
+            }
+            else if(computerChoice=="paper"){
+                if(humanChoice=="paper"){
+                    console.log("It's a Draw!")
+                }
+                else if(humanChoice=="scissors"){
+                    console.log("You Win!")
+                    humanScore++
+                }
+                else if(humanChoice=="rock"){
+                    console.log("You Lose!")
+                    computerScore++
+                }
+            }
+            else if(computerChoice=="scissors"){
+                if(humanChoice=="scissors"){
+                    console.log("It's a Draw")
+                }
+                else if(humanChoice=="rock"){
+                    console.log("You Win!")
+                    humanScore++
+                }
+                else if(humanChoice=="paper"){
+                    console.log("You Lose!")
+                    computerScore++
+                }
+            }
+        }
+        function playGame(){
+            for(let j=1;j<=5;j++){
+                getComputerChoice()
+                getHumanChoice()
+                playRound(chose,choice)
+            }
+            console.log("\n \n")
+            if(humanScore>computerScore){
+                console.log(`You Won! \nYour Score : ${humanScore}      Computer Score : ${computerScore}`)
+            }
+            else if(humanScore<computerScore){
+                console.log(`You Lost! \nYour Score : ${humanScore}      Computer Score : ${computerScore}`)
+            }
+            else{
+                console.log(`Whoa! It's a Draw! \nYour Score : ${humanScore}      Computer Score : ${computerScore}`)
+            }
+        }
+        playGame()
+        
+    </script>
+</body>
+</html>
